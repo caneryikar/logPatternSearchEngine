@@ -20,15 +20,11 @@ public class Main {
 		// System.out.println(array.size());
 		// readFileLineByLine();
 
-		 
-//		array1= populateStartingStringArrays();
-//		array2= populateStartingStringArrays();
-//		readFileLineByLine();
-//		 startSegmentationOfFile(array1,array2);
-		 processEachFile();
-
-
-
+		array1 = populateStartingStringArrays();
+		array2 = populateEndingStringArrays();
+		readFileLineByLine();
+		startSegmentationOfFile(array1, array2);
+		processEachFile();
 
 	}
 
@@ -62,9 +58,9 @@ public class Main {
 	public static void startSegmentationOfFile(ArrayList<String> string1, ArrayList<String> string2)
 			throws FileNotFoundException, UnsupportedEncodingException {
 		SegmentationOfFile segment = new SegmentationOfFile();
-		segment.segmentationOfFile(string1,string2);
+		segment.segmentationOfFile(string1, string2);
 	}
-	
+
 	public static void processEachFile() throws IOException {
 		ProcessEachFragmentedFile processEach = new ProcessEachFragmentedFile();
 		processEach.processEachFile();

@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 public class ProcessEachFragmentedFile {
 
 	public String lastLine, lineBeforeLast;
+	public int linkCount = 0;
 
 	public void processEachFile() throws IOException {
 
@@ -21,22 +22,30 @@ public class ProcessEachFragmentedFile {
 				// Do something with child
 				// time taken: 6205ms, status: FINISHED
 				String path = child.toString();
-//				System.out.println(path);
-//				String line32 = Files.readAllLines(Paths.get(path)).get(32);
-//				System.out.println(line32);
+				// System.out.println(path);
+				// String line32 = Files.readAllLines(Paths.get(path)).get(32);
+				// System.out.println(line32);
 				BufferedReader readFromFile = new BufferedReader(new FileReader(child));
-				while ((readFromFile.readLine()) != null) {
+				String line;
+				while ((line = readFromFile.readLine()) != null) {
 					// process the line.
 					// if (oneLineFromFile.contains("time taken: ")) {
 					// System.out.println( oneLineFromFile);
 					// }
-					//
-					lineBeforeLast = readFromFile.readLine();
-//					System.out.println(lineBeforeLast);
+					lineBeforeLast = lastLine;
+					lastLine= line;
+					if (line.contains(" HTTP/1.1")) {
+						linkCount++;
+					}
 				}
-//				System.out.println(child);
-//				System.out.println(lineBeforeLast);
+				
+				System.out.print(child+" has ");
+				System.out.print(linkCount);
+				System.out.println(" calls");
+				System.out.println(lineBeforeLast);
+				// System.out.println(lineBeforeLast);
 
+				linkCount = 0;
 			}
 		} else {
 			// Handle the case where dir is not really a directory.
