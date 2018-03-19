@@ -10,11 +10,17 @@ import java.util.ArrayList;
 public class PopulateEndingTestCases {
 
 	public ArrayList<String> endOfTC = new ArrayList<String>();
-
+	public String path;
+	// public String computer = "VAIO";
+	public String computer = "EALIYIK";
+	
+	
 	public ArrayList<String> populateStringArray() throws IOException {
-		PrintWriter writer = new PrintWriter((new File("C:\\Users\\VAIO\\Desktop\\JAVA\\" + "endhop.txt")));
+//		setting correct path
+		path = (computer == "VAIO") ? "C:\\Users\\VAIO\\Desktop\\JAVA\\" : "C:\\Users\\ealiyik\\Desktop\\JAVA\\";
+		PrintWriter writer = new PrintWriter((new File(path + "endhop.txt")));
 		// feeding endOfTC array
-		BufferedReader readFromFile = new BufferedReader(new FileReader("C:\\Users\\VAIO\\Desktop\\JAVA\\" + "endOfTC" + ".txt"));
+		BufferedReader readFromFile = new BufferedReader(new FileReader(path + "endOfTC" + ".txt"));
 		String oneLineFromFile = new String();
 
 		while ((oneLineFromFile = readFromFile.readLine()) != null) {

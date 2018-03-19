@@ -20,10 +20,10 @@ public class Main {
 		// System.out.println(array.size());
 		// readFileLineByLine();
 
-		array1 = populateStartingStringArrays();
-		array2 = populateEndingStringArrays();
-		readFileLineByLine();
-		startSegmentationOfFile(array1, array2);
+//		array1 = populateStartingStringArrays();
+//		array2 = populateEndingStringArrays();
+//		readFileLineByLine();
+//		startSegmentationOfFile(array1, array2);
 		processEachFile();
 
 	}

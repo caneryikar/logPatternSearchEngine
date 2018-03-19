@@ -13,15 +13,19 @@ import java.util.ArrayList;
 public class SegmentationOfFile {
 
 	public boolean startCopyingtoNewFile = false;
+	public String path;
+	// public String computer = "VAIO";
+	public String computer = "EALIYIK";
 
 	public void segmentationOfFile(ArrayList<String> startOfTC, ArrayList<String> endOfTC)
 			throws FileNotFoundException, UnsupportedEncodingException {
-int a = startOfTC.size();
-int b = endOfTC.size();
+		// setting up correct path
+		path = (computer == "VAIO") ? "C:\\Users\\VAIO\\Desktop\\JAVA\\" : "C:\\Users\\ealiyik\\Desktop\\JAVA\\";
 
+		int a = startOfTC.size();
+		int b = endOfTC.size();
 
-		
-		if (a==b) {
+		if (a == b) {
 			System.out.println("startOfTC boyutu: " + startOfTC.size());
 			System.out.println("endOfTC boyutu: " + endOfTC.size());
 			int size = startOfTC.size();
@@ -29,11 +33,11 @@ int b = endOfTC.size();
 			for (int i = 0; i < size; i++) {
 				// initializing new cropped file
 				PrintWriter writer = new PrintWriter(
-						(new File("C:\\Users\\VAIO\\Desktop\\JAVA\\FragmantedFiles\\" + startOfTC.get(i) + ".dat")),
+						(new File(path+"FragmantedFiles\\" + startOfTC.get(i) + ".dat")),
 						"UTF-8");
 
 				try (BufferedReader br = new BufferedReader(
-						new FileReader("C:\\Users\\VAIO\\Desktop\\JAVA\\" + "croppedText.dat"))) {
+						new FileReader(path + "croppedText.dat"))) {
 					String line;
 
 					while ((line = br.readLine()) != null) {
